@@ -1,15 +1,16 @@
-import { Request, Response, Router } from "express";
+import  { Request, Response, Router, Express } from "express";
 
 import authRouter from "./auth";
 import userRouter from "./user";
 
-export async function ApiRouter() {
+export async function ApiRouter(app: Express) {
   const apiRouter = Router();
-  apiRouter.use("/auth", authRouter);
 
-  apiRouter.use("/users", userRouter);
+  app.use("/api/auth", authRouter);
 
-  apiRouter.get("/healthChecker", async (_, res: Response) => {
+  app.use("/api/users", userRouter);
+
+  app.get("/api/healthChecker", async (_, res: Response) => {
     res.status(200).json({
       status: "success",
       message: "Welcome to Node.js, we are happy to see you",

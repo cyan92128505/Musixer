@@ -1,7 +1,7 @@
 import crypto from "crypto";
 import fs from "fs-extra";
 
-async function main() {
+async function generateKey() {
   const keyPair = crypto.generateKeyPairSync("rsa", {
     modulusLength: 4096,
     publicKeyEncoding: {
@@ -19,4 +19,4 @@ async function main() {
   await fs.writeFile(__dirname + `/../id_rsa_priv.pem`, keyPair.privateKey);
 }
 
-main();
+generateKey();

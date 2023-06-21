@@ -29,7 +29,7 @@ export async function App() {
   app.use(passport.initialize());
   await new PassportService().initPassport(passport);
 
-  app.use("/api", ApiRouter);
+  await ApiRouter(app);
 
   app.all("*", (req: Request, res: Response, next: NextFunction) => {
     next(new AppError(404, `Route ${req.originalUrl} not found`));
