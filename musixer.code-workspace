@@ -1,0 +1,21 @@
+{
+  "folders": [
+    {
+      "name": "root",
+      "path": "."
+    },
+    {
+      "name": "app",
+      "path": "app"
+    },
+    {
+      "name": "api",
+      "path": "api"
+    }
+  ],
+  "settings": {
+    "jest.autoRun": "off",
+    "jest.jestCommandLine": "npm run test",
+    "jest.disabledWorkspaceFolders": ["root"]
+  }
+}
