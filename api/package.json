@@ -1,22 +1,50 @@
 {
-   "name": "musixer-api",
-   "version": "0.0.1",
-   "description": "Awesome project developed with TypeORM.",
-   "type": "commonjs",
-   "devDependencies": {
-      "ts-node": "10.7.0",
-      "@types/node": "^16.11.10",
-      "typescript": "4.5.2"
-   },
-   "dependencies": {
-      "typeorm": "0.3.17",
-      "reflect-metadata": "^0.1.13",
-      "pg": "^8.4.0",
-      "express": "^4.17.2",
-      "body-parser": "^1.19.1"
-   },
-   "scripts": {
-      "start": "ts-node src/index.ts",
-      "typeorm": "typeorm-ts-node-commonjs"
-   }
+  "name": "musixer-api",
+  "version": "0.0.1",
+  "description": "Awesome project developed with TypeORM.",
+  "type": "commonjs",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "@types/config": "^3.3.0",
+    "@types/cookie-parser": "^1.4.3",
+    "@types/cors": "^2.8.13",
+    "@types/fs-extra": "^11.0.1",
+    "@types/jsonwebtoken": "^9.0.2",
+    "@types/node": "^16.11.10",
+    "@types/passport": "^1.0.12",
+    "@types/passport-jwt": "^3.0.8",
+    "@types/redis": "^4.0.11",
+    "ts-node": "10.7.0",
+    "typescript": "4.5.2"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.19.1",
+    "config": "^3.3.9",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "cros": "^1.0.1",
+    "dotenv": "^16.3.1",
+    "envalid": "^7.3.1",
+    "express": "^4.17.2",
+    "fs-extra": "^11.1.1",
+    "jsonwebtoken": "^9.0.0",
+    "passport": "^0.6.0",
+    "passport-jwt": "^4.0.1",
+    "pg": "^8.4.0",
+    "redis": "^4.6.7",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "0.3.17",
+    "winston": "^3.9.0",
+    "zod": "^3.21.4"
+  },
+  "scripts": {
+    "start": "ts-node src/main.ts",
+    "typeorm": "typeorm-ts-node-commonjs",
+    "build": "tsc -p .",
+    "migration:create":"npm run typeorm migration:create ./src/migration -- -d ./src/data-source.ts",
+    "migrate": "rm -rf build && npm run build && npm run typeorm migration:generate ./src/migration/added-user-entity -- -d ./src/data-source.ts",
+    "db:push": "rm -rf build && npm run build && npm run typeorm migration:run -- -d src/data-source.ts"
+  }
 }
