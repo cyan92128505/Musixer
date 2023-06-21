@@ -1,10 +1,7 @@
 import { CookieOptions, NextFunction, Request, Response } from "express";
 import config from "config";
-import { User } from './../entity/User';
-import {
-    CreateUserInput,
-    LoginUserInput,
-} from "../schema/User";
+import { User } from "./../entity/User";
+import { CreateUserInput, LoginUserInput } from "../schema/User";
 import {
   createUser,
   findUserByEmail,
@@ -53,7 +50,11 @@ export const registerUserHandler = async (
     });
 
     await newUser.save();
-    
+
+    res.status(201).json({
+      status: "success",
+      message: "User registered successfully",
+    });
   } catch (err: any) {
     if (err.code === "23505") {
       return res.status(409).json({

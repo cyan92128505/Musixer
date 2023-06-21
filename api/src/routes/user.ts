@@ -7,6 +7,12 @@ const router = express.Router();
 
 router.use(deserializeUser, requireUser);
 
-router.get('/me', getMeHandler);
+router.get(
+  "/me",
+  /* #swagger.responses[200] = { 
+      schema: { "$ref": "#/definitions/User" },
+      description: "User registered successfully." } */
+  getMeHandler
+);
 
 export default router;

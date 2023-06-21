@@ -15,8 +15,34 @@ import {
 
 const router = express.Router();
 
-router.post('/register', validate(createUserSchema), registerUserHandler);
-router.post('/login', validate(loginUserSchema), loginUserHandler);
+router.post(
+  "/register",
+  /*	#swagger.parameters['obj'] = {
+            in: 'body',
+            description: 'Register User.',
+            required: true,
+            schema: { $ref: "#/definitions/RegisterUser" }
+    } */
+  /* #swagger.responses[201] = { 
+      schema: { "$ref": "#/definitions/RegisterRes" },
+      description: "User registered successfully." } */
+  validate(createUserSchema),
+  registerUserHandler
+);
+router.post(
+  "/login",
+  /*	#swagger.parameters['obj'] = {
+            in: 'body',
+            description: 'Login User.',
+            required: true,
+            schema: { $ref: "#/definitions/LoginUser" }
+    } */
+  /* #swagger.responses[200] = { 
+      schema: { "$ref": "#/definitions/LoginRes" },
+      description: "User registered successfully." } */
+  validate(loginUserSchema),
+  loginUserHandler
+);
 router.get('/logout', deserializeUser, requireUser, logoutHandler);
 router.get('/refresh', refreshAccessTokenHandler);
 

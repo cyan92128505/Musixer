@@ -9,6 +9,7 @@ import logger from "./utils/logger";
 import PassportService from "./service/passportService";
 import ApiRouter from "./routes";
 import AppError from "./utils/appError";
+import { ApiDocs } from "./docs";
 
 export async function App() {
   const app = express();
@@ -30,6 +31,8 @@ export async function App() {
   await new PassportService().initPassport(passport);
 
   await ApiRouter(app);
+
+  await ApiDocs(app);
 
   app.all("*", (req: Request, res: Response, next: NextFunction) => {
     next(new AppError(404, `Route ${req.originalUrl} not found`));
