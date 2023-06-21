@@ -2,11 +2,9 @@ import express from "express";
 import { Request, Response, NextFunction } from "express";
 import cors from "cors";
 import cookieParser = require("cookie-parser");
-import passport = require("passport");
 import config from "config";
 
 import logger from "./utils/logger";
-import PassportService from "./service/passportService";
 import ApiRouter from "./routes";
 import AppError from "./utils/appError";
 import { ApiDocs } from "./docs";
@@ -26,9 +24,6 @@ export async function App() {
 
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
-
-  app.use(passport.initialize());
-  await new PassportService().initPassport(passport);
 
   await ApiRouter(app);
 

@@ -49,7 +49,7 @@ async function swaggerGen(){
         },
       },
     };
-    const outputFile = "./swagger-output.json";
+    const outputFile = path.join(process.cwd(), "swagger-output.json");
     const endpointsFiles = [path.join(process.cwd(), "src/routes/index.ts")];
     swaggerAutogen()(outputFile, endpointsFiles, doc);
 }

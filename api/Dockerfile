@@ -11,7 +11,7 @@ WORKDIR /app
 
 # Set production environment
 ENV NODE_ENV=production
-
+ENV PORT=3000
 
 # Throw-away build stage to reduce size of final image
 FROM base as build
@@ -29,6 +29,7 @@ COPY --link . .
 
 # Build application
 RUN npm run build
+RUN npm run swagger
 
 # Remove development dependencies
 RUN npm prune --omit=dev
