@@ -1,0 +1,16 @@
+.idea/
+.vscode/
+node_modules/
+build/
+tmp/
+temp/
+coverage
+dist
+.env
+*.env
+demo
+*.demo.*
+id_rsa_priv.pem*
+id_rsa_pub.pem*
+client
+*.log
