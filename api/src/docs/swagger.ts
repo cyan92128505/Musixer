@@ -2,7 +2,6 @@ require("dotenv").config();
 import path from "path";
 import swaggerAutogen from "swagger-autogen";
 import { User } from "../entity/User";
-import config from "config";
 
 async function swaggerGen() {
   const user = new User();
@@ -16,7 +15,7 @@ async function swaggerGen() {
       title: "Musixer API",
       description: "",
     },
-    host: config.get<string>("apiHost"),
+    host: process.env.API_HOST,
     basePath: "/",
     schemes: ["http", "https"],
     consumes: ["application/json"],

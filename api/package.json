@@ -48,6 +48,7 @@
     "db:push": "rm -rf build && npm run build && npm run typeorm migration:run -- -d src/data-source.ts",
     "test": "jest",
     "swagger": "ts-node ./src/docs/swagger.ts",
-    "fly:deploy": "fly deploy"
+    "fly:deploy": "fly deploy",
+    "fly:swagger": "node ./build/src/docs/swagger.js"
   }
 }
