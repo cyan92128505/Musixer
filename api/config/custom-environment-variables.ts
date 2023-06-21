@@ -1,5 +1,7 @@
 export default {
   port: "PORT",
+  apiHost: "API_HOST",
+
   postgresConfig: {
     host: "POSTGRES_HOST",
     port: "POSTGRES_PORT",
