@@ -4,6 +4,7 @@ import { requireUser } from '../middleware/requireUser';
 import {
   getCountryCodeListHandler,getLastTenArtistsByCountryCodeHandler,
   getLastTenAlbumsByArtistHandler,
+  getTracksByAlbumIdHandler,
 } from "../controller/MusixmatchController";
 
 const router = express.Router();
@@ -30,5 +31,15 @@ router.get(
       description: "getLastTenAlbumsByArtistHandler." } */
   getLastTenAlbumsByArtistHandler
 );
+
+router.get(
+  "/getTracksByAlbumId/:albumId",
+  /* #swagger.responses[200] = { 
+      description: "getLastTenAlbumsByArtistHandler." } */
+  getTracksByAlbumIdHandler
+);
+
+
+
 
 export default router;

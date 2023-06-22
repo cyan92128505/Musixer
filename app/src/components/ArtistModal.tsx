@@ -24,6 +24,7 @@ import * as MusixmatchAlbum from "../types/Album";
 import { api, errorHandler } from "../services/Utils";
 
 import { FavoriteButton } from "./FavoriteButton";
+import { AlbumPanel } from "./AlbumPanel";
 
 type ArtistModalProps = {
   artist: MusixmatchArtist.Artist2;
@@ -70,20 +71,9 @@ export const ArtistModal: React.FC<ArtistModalProps> = (props) => {
           <ModalHeader>{props.artist.artist_name}</ModalHeader>
           <ModalBody>
             <SimpleGrid pt={8} pb={16} columns={5} spacing={10}>
-              {albumList.map((album) => {
-                return (
-                  <Box borderWidth="1px" borderRadius="lg" p={8} key={album.album.album_id}>
-                    <p>{album.album.album_name}</p>
-                    <br></br>
-                    <Flex>
-                      <Spacer></Spacer>
-                      <FavoriteButton
-                        album={album.album}
-                      ></FavoriteButton>
-                    </Flex>
-                  </Box>
-                );
-              })}
+              {albumList.map((album) => (
+                <AlbumPanel album={album.album} key={album.album.album_id}></AlbumPanel>
+              ))}
             </SimpleGrid>
           </ModalBody>
           <ModalFooter>

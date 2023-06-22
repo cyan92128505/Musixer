@@ -3,6 +3,7 @@ import {
   getCountryCodeList,
   getLastTenAlbumsByArtist,
   getLastTenArtistsByCountryCode,
+  getTracksByAlbumId,
 } from "../service/musixmatch.service";
 
 export const getCountryCodeListHandler = async (
@@ -60,3 +61,23 @@ export const getLastTenAlbumsByArtistHandler = async (
     next(err);
   }
 };
+
+export const getTracksByAlbumIdHandler = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const albumId = req.params.albumId;
+    const result = await getTracksByAlbumId(Number(albumId));
+    res.status(200).json({
+      status: "success",
+      data: {
+        result,
+      },
+    });
+  } catch (err: any) {
+    next(err);
+  }
+};
+

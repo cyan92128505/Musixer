@@ -39,6 +39,7 @@ export interface Album {
   restricted: number;
   updated_time: string;
   external_ids: Externalids;
+  album_coverart_100x100?: string;
 }
 
 export interface Externalids {

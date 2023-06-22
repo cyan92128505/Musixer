@@ -36,5 +36,12 @@ export async function getLastTenAlbumsByArtist(artistId: number) {
   });
 }
 
+export async function getTracksByAlbumId(albumId: number) {
+  return await mxm.albumTracks({
+    album_id: albumId,
+  });
+}
+
+
 
 

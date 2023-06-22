@@ -207,6 +207,29 @@
         }
       }
     },
+    "/api/musixmatch/getTracksByAlbumId/{albumId}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "albumId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "getLastTenAlbumsByArtistHandler."
+          }
+        }
+      }
+    },
     "/api/album/create": {
       "post": {
         "description": "",
