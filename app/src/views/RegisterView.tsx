@@ -10,7 +10,7 @@ import {
   Stack,
   Link,
 } from "@chakra-ui/react";
-import { isAuth } from "../components/Auth";
+import { isAuth } from "../services/Auth";
 import { ColorModeSwitcher } from "../ColorModeSwitcher";
 import { Logo } from "../Logo";
 import RegisterForm from "../components/registerForm/Form";

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Container, FormControl, Select, SimpleGrid } from "@chakra-ui/react";
 import countryCode from "../database/country_code.json";
-import { api, errorHandler } from "../components/Utils";
+import { api, errorHandler } from "../services/Utils";
 import * as MusixmatchArtist from "../types/Artist";
 import { ArtistModal } from "../components/ArtistModal";
 

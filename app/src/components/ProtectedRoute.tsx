@@ -1,6 +1,6 @@
 import React from "react";
 import {  Navigate } from "react-router-dom";
-import { isAuth } from "./Auth";
+import { isAuth } from "../services/Auth";
 
 export type ProtectedRouteProps = {
   outlet: JSX.Element;

@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from "react";
-import { api, errorHandler } from "../components/Utils";
-import { saveUser } from "../components/Auth";
+import { api, errorHandler } from "../services/Utils";
+import { saveUser } from "../services/Auth";
 import User from "../types/User";
 
 type UserProps = {

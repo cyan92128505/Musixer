@@ -2,8 +2,8 @@ import { Input, Button, Stack } from "@chakra-ui/react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import AlertPop from "./AlertPop";
-import { api, errorHandler } from "../Utils";
-import { login } from "../Auth";
+import { api, errorHandler } from "../../services/Utils";
+import { login } from "../../services/Auth";
 
 type RegisterFormType = {
   name: string;

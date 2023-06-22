@@ -21,7 +21,7 @@ import {
 import React, { useEffect, useState } from "react";
 import * as MusixmatchArtist from "../types/Artist";
 import * as MusixmatchAlbum from "../types/Album";
-import { api, errorHandler } from "./Utils";
+import { api, errorHandler } from "../services/Utils";
 
 import { FavoriteButton } from "./FavoriteButton";
 

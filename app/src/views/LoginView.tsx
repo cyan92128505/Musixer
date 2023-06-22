@@ -1,9 +1,9 @@
 import { useCallback, useState } from "react";
-import { api, errorHandler } from "../components/Utils";
+import { api, errorHandler } from "../services/Utils";
 import { useNavigate } from "react-router";
 import { Link as ReachLink } from "react-router-dom";
 
-import { isAuth, login } from "../components/Auth";
+import { isAuth, login } from "../services/Auth";
 import {
   Grid,
   VStack,

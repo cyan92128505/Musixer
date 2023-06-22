@@ -1,5 +1,5 @@
 import { Link as ReachLink } from "react-router-dom";
-import { isAuth, logout } from "./Auth";
+import { isAuth, logout } from "../services/Auth";
 import React from "react";
 import {
   Spacer, Button,
