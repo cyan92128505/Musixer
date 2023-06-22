@@ -1,20 +1,33 @@
-import { Link } from "react-router-dom";
-import { isAuth } from "./Auth";
+import { Link as ReachLink } from "react-router-dom";
+import { isAuth, logout } from "./Auth";
 import React from "react";
+import {
+  Spacer, Button,
+
+  Flex,
+  Divider,
+  Container,
+} from "@chakra-ui/react";
 
 export const AppNavigation: React.FC = () => {
   if (!isAuth()) {
     return <></>;
   }
   return (
-    <nav>
-      <Link to={"/"}>
-        <li>Home</li>
-      </Link>
-      <Link to={"/profile"}>
-        <li>Profile</li>
-      </Link>
-    </nav>
+    <>
+      <Container>
+        <Flex>
+          <Button variant="ghost" as={ReachLink} to={"/"}>
+            MUSIXER
+          </Button>
+          <Spacer />
+          <Button variant="ghost" type="button" onClick={logout}>
+            Logout
+          </Button>
+        </Flex>
+      </Container>
+      <Divider />
+    </>
   );
 };
 
