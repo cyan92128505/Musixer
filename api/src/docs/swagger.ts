@@ -1,3 +1,4 @@
+import { Album } from './../entity/Album';
 import {
   getLastTenAlbumsByArtistRequestType,
   getLastTenArtistsByCountryCodeRequestType,
@@ -12,6 +13,12 @@ async function swaggerGen() {
   user.name = "Jhon Doe";
   user.password = "abcd1234";
   user.email = "a@a.com";
+
+  const album = new Album();
+  album.albumId = 48445718;
+  album.albumName = "好不容易 (《華燈初上》片尾曲) - Single";
+  album.artistId = 34470265;
+  album.artistName = "告五人";
 
   const doc = {
     info: {
@@ -38,6 +45,7 @@ async function swaggerGen() {
       },
     },
     definitions: {
+      Album: album,
       User: user,
       RegisterUser: { ...user, passwordConfirm: user.password },
       LoginUser: {
@@ -57,7 +65,7 @@ async function swaggerGen() {
       },
       getLastTenArtistsByCountryCodeRequestType: {
         countryCode: "tw",
-      } ,
+      },
     },
   };
   const outputFile = path.join(process.cwd(), "swagger-output.json");

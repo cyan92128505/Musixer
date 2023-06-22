@@ -1,30 +1,23 @@
-import { Column, Entity, Index, ManyToOne } from "typeorm"
+import { Column, Entity, Index, JoinColumn, ManyToOne, RelationId } from "typeorm"
 import { User } from "./User";
 import Model from "./Model";
 
 @Entity()
-@Index(["id", "albumId"], { unique: true })
+@Index(["user", "albumId"], { unique: true })
 export class Album extends Model {
-  @Column({
-    name: "album_id",
-  })
+  @Column()
   albumId!: number;
 
-  @Column({
-    name: "album_name",
-  })
+  @Column()
   albumName!: string;
 
-  @Column({
-    name: "artist_id",
-  })
+  @Column()
   artistId!: number;
 
-  @Column({
-    name: "artist_name",
-  })
+  @Column()
   artistName!: string;
 
   @ManyToOne(() => User, (user) => user.favoriteAlbums)
+  @JoinColumn({ name: "userId" })
   user: User;
 }

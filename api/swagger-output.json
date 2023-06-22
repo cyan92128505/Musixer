@@ -206,9 +206,99 @@
           }
         }
       }
+    },
+    "/api/album/create": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Create Album",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Album"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "create Album."
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/album/list": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "findAlbumByUserId."
+          }
+        }
+      }
+    },
+    "/api/album/{albumId}": {
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "albumId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "deleteAlbumById."
+          }
+        }
+      }
     }
   },
   "definitions": {
+    "Album": {
+      "type": "object",
+      "properties": {
+        "albumId": {
+          "type": "number",
+          "example": 48445718
+        },
+        "albumName": {
+          "type": "string",
+          "example": "好不容易 (《華燈初上》片尾曲) - Single"
+        },
+        "artistId": {
+          "type": "number",
+          "example": 34470265
+        },
+        "artistName": {
+          "type": "string",
+          "example": "告五人"
+        }
+      }
+    },
     "User": {
       "type": "object",
       "properties": {
