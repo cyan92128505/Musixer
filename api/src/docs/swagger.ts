@@ -1,3 +1,7 @@
+import {
+  getLastTenAlbumsByArtistRequestType,
+  getLastTenArtistsByCountryCodeRequestType,
+} from "./../service/musixmatch.service";
 require("dotenv").config();
 import path from "path";
 import swaggerAutogen from "swagger-autogen";
@@ -48,6 +52,12 @@ async function swaggerGen() {
         status: "success",
         access_token: "access_token",
       },
+      getLastTenAlbumsByArtistRequestType: {
+        artist_id: "34470265",
+      },
+      getLastTenArtistsByCountryCodeRequestType: {
+        countryCode: "tw",
+      } ,
     },
   };
   const outputFile = path.join(process.cwd(), "swagger-output.json");

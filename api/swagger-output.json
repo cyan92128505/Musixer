@@ -143,6 +143,69 @@
           }
         }
       }
+    },
+    "/api/musixmatch/getCountryCodeList": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "getLastTenArtistsByCountryCodeHandler."
+          }
+        }
+      }
+    },
+    "/api/musixmatch/getLastTenArtistsByCountryCode/{countryCode}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "countryCode",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "getLastTenArtistsByCountryCodeHandler."
+          }
+        }
+      }
+    },
+    "/api/musixmatch/getLastTenAlbumsByArtist/{artistId}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "artistId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "getLastTenAlbumsByArtistHandler."
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -220,6 +283,24 @@
         "access_token": {
           "type": "string",
           "example": "access_token"
+        }
+      }
+    },
+    "getLastTenAlbumsByArtistRequestType": {
+      "type": "object",
+      "properties": {
+        "artist_id": {
+          "type": "string",
+          "example": "34470265"
+        }
+      }
+    },
+    "getLastTenArtistsByCountryCodeRequestType": {
+      "type": "object",
+      "properties": {
+        "countryCode": {
+          "type": "string",
+          "example": "tw"
         }
       }
     }

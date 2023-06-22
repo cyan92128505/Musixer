@@ -2,6 +2,7 @@ import  { Request, Response, Router, Express } from "express";
 
 import authRouter from "./auth";
 import userRouter from "./user";
+import musixmatchRouter from "./musixmatch";
 
 export async function ApiRouter(app: Express) {
   const apiRouter = Router();
@@ -9,6 +10,8 @@ export async function ApiRouter(app: Express) {
   app.use("/api/auth", authRouter);
 
   app.use("/api/users", userRouter);
+
+  app.use("/api/musixmatch", musixmatchRouter);
 
   app.get("/api/healthChecker", async (_, res: Response) => {
     res.status(200).json({
