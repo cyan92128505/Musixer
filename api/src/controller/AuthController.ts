@@ -51,10 +51,11 @@ export const registerUserHandler = async (
 
     await newUser.save();
 
-    res.status(201).json({
-      status: "success",
-      message: "User registered successfully",
-    });
+    // res.status(201).json({
+    //   status: "success",
+    //   message: "User registered successfully",
+    // });
+    return loginUserHandler(req, res, next);
   } catch (err: any) {
     if (err.code === "23505") {
       return res.status(409).json({
@@ -95,6 +96,7 @@ export const loginUserHandler = async (
     res.status(200).json({
       status: "success",
       access_token,
+      user: user.toJSON(),
     });
   } catch (err: any) {
     next(err);

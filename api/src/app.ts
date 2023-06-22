@@ -8,21 +8,15 @@ import logger from "./utils/logger";
 import ApiRouter from "./routes";
 import AppError from "./utils/appError";
 import { ApiDocs } from "./docs";
+import requestMethods from "./middleware/requestMethods";
+import customCors from "./middleware/cors";
 
 export async function App() {
   const app = express();
-  app.use(express.json({ limit: "10kb" }));
-
+  app.use(requestMethods);
   app.use(cookieParser());
-
-  app.use(
-    cors({
-      origin: config.get<string>("origin"),
-      credentials: true,
-    })
-  );
-
-  app.use(express.json());
+  app.use(customCors);
+  app.use(express.json({ limit: "10kb" }));
   app.use(express.urlencoded({ extended: false }));
 
   await ApiRouter(app);
