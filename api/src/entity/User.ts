@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt";
-import { Entity, Index, Column, BeforeInsert } from "typeorm";
+import { Entity, Index, Column, BeforeInsert, OneToMany } from "typeorm";
 import Model from './Model'
+import { Album } from "./Album";
 
 @Entity()
 export class User extends Model {
@@ -15,6 +16,9 @@ export class User extends Model {
 
   @Column()
   password!: string;
+
+  @OneToMany(() => Album, (album) => album.user)
+  favoriteAlbums: Album[];
 
   toJSON() {
     return { ...this, password: undefined };
