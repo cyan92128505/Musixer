@@ -53,6 +53,7 @@
     "test": "jest",
     "swagger": "ts-node ./src/docs/swagger.ts",
     "fly:deploy": "fly deploy",
-    "fly:swagger": "node ./build/src/docs/swagger.js"
+    "fly:swagger": "node ./build/src/docs/swagger.js",
+    "generate:key": "ts-node ./src/tool/generateKey.ts"
   }
 }

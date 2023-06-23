@@ -1,5 +1,7 @@
 import crypto from "crypto";
 import fs from "fs-extra";
+import path from "path";
+import logger from "../utils/logger";
 
 async function generateKey() {
   const keyPair = crypto.generateKeyPairSync("rsa", {
@@ -14,9 +16,23 @@ async function generateKey() {
     },
   });
 
-  await fs.writeFile(__dirname + `/../id_rsa_pub.pem`, keyPair.publicKey);
+  const decode = (str: string): string =>
+    Buffer.from(str, "utf8").toString("base64");
 
-  await fs.writeFile(__dirname + `/../id_rsa_priv.pem`, keyPair.privateKey);
+  const pub = await fs.writeFile(
+    path.join(process.cwd(), "id_rsa_pub.pem.base64"),
+    decode(keyPair.publicKey),
+    "utf8"
+  );
+  logger.info(`genrate id_rsa_pub.pem.base64`);
+
+  await fs.writeFile(
+    path.join(process.cwd(), "id_rsa_priv.pem.base64"),
+    decode(keyPair.privateKey),
+    "utf8"
+  );
+  logger.info(`genrate id_rsa_priv.pem.base64`);
+
 }
 
 generateKey();
